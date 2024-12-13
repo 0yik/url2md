@@ -25,3 +25,7 @@ pub async fn save_to_file(content: &str, path: &str) -> Result<()> {
     tokio::fs::write(path, content).await?;
     Ok(())
 }
+
+#[cfg(test)]
+#[path = "client_test.rs"]
+mod tests;

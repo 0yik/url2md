@@ -82,3 +82,7 @@ async fn convert_url(
         )),
     }
 }
+
+#[cfg(test)]
+#[path = "server_test.rs"]
+mod tests;

@@ -195,7 +195,7 @@ impl MarkdownConverter {
                 if !items.is_empty() {
                     markdown.push('\n');
                     for item in items {
-                        markdown.push_str(&format!("- {}\n", item));
+                        markdown.push_str(&format!("* {}\n", item));
                     }
                     markdown.push('\n');
                 }
@@ -274,13 +274,17 @@ impl MarkdownConverter {
 
         // Output table in markdown format
         if !headers.is_empty() {
-            markdown.push_str(&format!("| {} |\n", headers.join(" | ")));
-            markdown.push_str(&format!("| {} |\n", headers.iter().map(|_| "---").collect::<Vec<_>>().join(" | ")));
+            markdown.push_str(&format!("|{}|\n", headers.join("|")));
+            markdown.push_str(&format!("|{}|\n", headers.iter().map(|_| "---").collect::<Vec<_>>().join("|")));
         }
 
         for row in rows {
-            markdown.push_str(&format!("| {} |\n", row.join(" | ")));
+            markdown.push_str(&format!("|{}|\n", row.join("|")));
         }
         markdown.push('\n');
     }
 }
+
+#[cfg(test)]
+#[path = "markdown_converter_test.rs"]
+mod tests;
