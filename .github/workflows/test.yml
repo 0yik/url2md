@@ -17,12 +17,15 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up Rust
-        uses: rust-lang/rustup@v1
+        uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
+          override: true
 
       - name: Install dependencies
         run: cargo build --release
 
       - name: Run tests
-        run: cargo test --package url2md
+        uses: actions-rs/cargo@v1
+        with:
+          command: test
