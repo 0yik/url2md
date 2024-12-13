@@ -1,3 +1,4 @@
-mod client;
+pub mod client;
+pub mod server;
 
-pub use client::{fetch_html, save_to_file};
+pub use client::*;
